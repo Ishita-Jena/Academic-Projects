@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring Boot CRUD System - Student Registration</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h2>Spring Boot CRUD System - Student Registration</h2>
+        </div>
+
+        <!-- Student Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Course</th>
+                        <th>Fee</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iterate over the list of students -->
+                    <tr th:each="student : ${liststudent}">
+                        <td th:text="${student.id}">Student ID</td>
+                        <td th:text="${student.studentname}">Student Name</td>
+                        <td th:text="${student.course}">Course</td>
+                        <td th:text="${student.fee}">Fee</td>                
+                        <td>
+                            <a class="btn btn-dark text-white btn-sm" th:href="@{'/edit/' + ${student.id}}">Edit</a>
+                        </td>                                  
+                        <td>
+                            <a class="btn btn-dark text-white btn-sm" th:href="@{'/delete/' + ${student.id}}">Delete</a>
+                        </td>            
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add New Student button at the bottom and centered -->
+        <div class="d-flex justify-content-center mt-4">
+            <a class="btn btn-dark text-white" th:href="@{'/new'}">Add New Student</a>
+        </div>
+    </div>
+</body>
+</html>
